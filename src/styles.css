@@ -1,0 +1,95 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * shadcn's tokens, pointed at the phone's palette.
+ *
+ * This mapping is the whole trick. shadcn components read `--background`, `--foreground`,
+ * `--primary` and friends; the phone hands you `--phone-background`, `--phone-label`,
+ * `--phone-accent` at handshake time. Wiring one to the other means every component you add with
+ * `shadcn add` follows the phone's theme — including a theme change while your app is open —
+ * without you restyling anything.
+ *
+ * The fallbacks are the phone's own dark palette, so the app looks right in a plain browser too,
+ * where there is no phone to ask.
+ */
+:root {
+  --phone-background: #272727;
+  --phone-surface: #303030;
+  --phone-label: #ffffff;
+  --phone-secondaryLabel: #9a9aa2;
+  --phone-accent: #fab432;
+
+  /* Usable area inside the phone's chrome; `applyContext` overwrites both. */
+  --safe-top: 64px;
+  --safe-bottom: 16px;
+
+  --radius: 0.75rem;
+
+  --background: var(--phone-background);
+  --foreground: var(--phone-label);
+  --card: var(--phone-surface);
+  --card-foreground: var(--phone-label);
+  --popover: var(--phone-surface);
+  --popover-foreground: var(--phone-label);
+  --primary: var(--phone-accent);
+  /*
+   * Constant, not derived from `colorScheme`: the phone uses the same warm yellow accent in both
+   * its light and dark palettes, so text on it is dark either way.
+   */
+  --primary-foreground: #101014;
+  --secondary: var(--phone-surface);
+  --secondary-foreground: var(--phone-label);
+  --muted: var(--phone-surface);
+  --muted-foreground: var(--phone-secondaryLabel);
+  --accent: var(--phone-surface);
+  --accent-foreground: var(--phone-label);
+  --destructive: #ef4444;
+  --border: color-mix(in srgb, var(--phone-label) 12%, transparent);
+  --input: color-mix(in srgb, var(--phone-label) 16%, transparent);
+  --ring: var(--phone-accent);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Spacing utilities for the phone's chrome: `pt-safe-top`, `pb-safe-bottom`. */
+  --spacing-safe-top: var(--safe-top);
+  --spacing-safe-bottom: var(--safe-bottom);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    font-family: system-ui, sans-serif;
+  }
+}

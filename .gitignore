@@ -1,0 +1,6 @@
+node_modules
+dist
+*.zip
+tsconfig.tsbuildinfo
+# Synced from node_modules/@fastrp/phone-app-sdk by `bun run pack` / `bun run sync-sdk`.
+public/fastapp-sdk.js

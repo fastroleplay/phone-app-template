@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kahve</title>
+
+    <!--
+      The SDK ships inside your package. It cannot be loaded from a CDN: packages are served with
+      `script-src 'self'`, so an external script tag is blocked by the browser and your app simply
+      never connects to the phone.
+
+      Your code imports the SDK from `@fastrp/phone-app-sdk` and Vite bundles it. This classic
+      copy is the same build: `bun run pack` syncs it from node_modules into `public/`, it exposes
+      `window.PhoneSDK` for the console and for pages that skip the bundler, and it is the file the
+      pack step checks for. `public/fastapp-sdk.js` is not committed — the installed package is
+      the source of truth.
+    -->
+    <script src="./fastapp-sdk.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
