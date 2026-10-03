@@ -78,8 +78,10 @@ Keep `base: './'` — the package is served from an arbitrary path. Keep the `st
   (`context.viewport = { width, height, safeAreaTop, safeAreaBottom }`). The phone scales the whole frame (about 0.75 at 1080p);
   author in these pixels.
 - **Theme** (`context.theme`): `{ label, secondaryLabel, background, surface, accent, colorScheme: 'dark' | 'light' }`
-  (hex strings). Dark: background `#272727`, surface `#303030`, label `#ffffff`, accent `#fab432`. Light: background `#f5f5f7`,
-  surface `#ffffff`, label `#101014`, accent `#fab432`. It changes live: handle `theme.changed` (the template's `applyContext()`
+  (hex strings). Dark: background `#08090b`, surface `#1a1c21`, label `#f5f6f8`, secondary label `#969799`, accent `#fab432`.
+  Light: background `#f2f2f7`, surface `#ffffff`, label `#161a22`, secondary label `#6e7077`, accent `#fab432`. The phone
+  resolves these from the FAST design system's phone tokens, so they move when the phone is restyled — read them from
+  `context.theme`, never hard-code them. It changes live: handle `theme.changed` (the template's `applyContext()`
   writes `--phone-<key>` CSS variables and `color-scheme`, so shadcn components follow automatically).
 - **Language** (`context.locale`, `'en' | 'tr'`): the player's game language. Handle `locale.changed`; ship both languages.
 - **Keyboard**: `<input>`, `<textarea>` and `contenteditable` are tracked automatically; focusing one takes the game

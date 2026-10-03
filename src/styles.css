@@ -16,10 +16,10 @@
  * where there is no phone to ask.
  */
 :root {
-  --phone-background: #272727;
-  --phone-surface: #303030;
-  --phone-label: #ffffff;
-  --phone-secondaryLabel: #9a9aa2;
+  --phone-background: #08090b;
+  --phone-surface: #1a1c21;
+  --phone-label: #f5f6f8;
+  --phone-secondaryLabel: #969799;
   --phone-accent: #fab432;
 
   /* Usable area inside the phone's chrome; `applyContext` overwrites both. */
